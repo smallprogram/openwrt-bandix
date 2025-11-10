@@ -308,6 +308,27 @@ jobs:
           mkdir upload
           mv bin/packages/*/base/bandix* upload/
           cd upload
+
+          # 遍历所有 bandix 文件
+          for file in bandix*; do
+            if [[ -f "$file" ]]; then
+                # 提取文件名和扩展名
+                filename="${file%.*}"
+                extension="${file##*.}"
+
+                # 只有当 matrix.ver 是 apk 时才重命名
+                if [[ "${{ matrix.ver }}" == "apk" ]]; then
+                    new_name="${filename}-${{ matrix.platform }}.${extension}"
+                    mv "$file" "$new_name"
+                    echo "Renamed: $file -> $new_name"
+                else
+                    echo "Skipped renaming (ver != apk): $file"
+                fi
+            fi
+          done
+
+
+
           echo "status=success" >> $GITHUB_OUTPUT
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
