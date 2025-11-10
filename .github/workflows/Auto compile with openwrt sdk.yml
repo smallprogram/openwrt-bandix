@@ -219,7 +219,7 @@ jobs:
             ver: "apk"
 
           - platform: mipsel_24kc
-            url_sdk: https://downloads.openwrt.org/snapshots/targets/ramips/rt288x/openwrt-sdk-ramips-rt288x_gcc-14.3.0_musl.Linux-x86_64.tar.zst
+            url_sdk: https://downloads.openwrt.org/snapshots/targets/ramips/rt288x/openwrt-sdk-ramips-rt288x_gcc-14.2.0_musl.Linux-x86_64.tar.zst
             ver: "apk"
 
           - platform: mipsel_74kc
